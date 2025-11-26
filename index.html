@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Framelit_Edits</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Poppins, sans-serif;
+        background: #0a0a0a;
+        color: #ffffff;
+        text-align: center;
+    }
+
+    h1, h2 {
+        letter-spacing: 2px;
+        text-transform: uppercase;
+    }
+
+    .hero {
+        padding: 120px 20px;
+        background: linear-gradient(to bottom, #000000cc, #0a0a0a);
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 14px 30px;
+        margin-top: 20px;
+        background: #8a2be2;
+        border-radius: 999px;
+        text-decoration: none;
+        font-weight: bold;
+        color: white;
+        transition: .3s;
+    }
+    .btn:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 15px #8a2be2aa;
+    }
+
+    section {
+        padding: 80px 20px;
+        max-width: 1100px;
+        margin: auto;
+    }
+
+    /* SERVICES */
+    .services {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 30px;
+    }
+    .card {
+        background: #111;
+        padding: 25px;
+        border-radius: 20px;
+        width: 250px;
+        border: 1px solid #222;
+        transition: .3s;
+    }
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 0 20px #8a2be255;
+    }
+
+    /* PORTFOLIO GRID */
+    .portfolio {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 25px;
+        padding: 20px;
+    }
+
+    .video-card {
+        position: relative;
+        border-radius: 18px;
+        overflow: hidden;
+        background: #111;
+        border: 2px solid #222;
+        height: 360px;
+    }
+
+    /* Skeleton loader */
+    .skeleton {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg,#222,#333,#222);
+        background-size: 200% 100%;
+        animation: loading 1.5s infinite;
+        border-radius: 18px;
+    }
+    @keyframes loading {
+        0% { background-position: 200% 0;}
+        100% { background-position: -200% 0;}
+    }
+
+    .video-card video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        transition: opacity .5s;
+    }
+
+    /* Hover Glow */
+    .video-card:hover {
+        box-shadow: 0 0 25px #8a2be255;
+        transform: scale(1.03);
+    }
+
+    footer {
+        padding: 30px;
+        background: #000;
+        color: #555;
+    }
+</style>
+</head>
+<body>
+
+<section class="hero">
+    <h1>Framelit_Edits</h1>
+    <p>Premium Video Edits • Reels • Brand Collabs • Thumbnails</p>
+    <a href="https://instagram.com/your_instagram" class="btn" target="_blank">
+        DM on Instagram
+    </a>
+</section>
+
+<section>
+    <h2>What I Do</h2>
+    <div class="services">
+        <div class="card">🔥 Video Editing</div>
+        <div class="card">🎬 Reels & Shorts</div>
+        <div class="card">🤝 Brand Collaborations</div>
+        <div class="card">🖼 Thumbnails</div>
+    </div>
+</section>
+
+<section>
+    <h2>Portfolio</h2>
+    <div class="portfolio">
+
+        <div class="video-card">
+            <div class="skeleton"></div>
+            <video controls playsinline preload="metadata">
+                <source src="video1.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="video-card">
+            <div class="skeleton"></div>
+            <video controls playsinline preload="metadata">
+                <source src="video2.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="video-card">
+            <div class="skeleton"></div>
+            <video controls playsinline preload="metadata">
+                <source src="video3.mp4" type="video/mp4">
+            </video>
+        </div>
+
+    </div>
+</section>
+
+<section>
+    <h2>Let's Work Together</h2>
+    <p>DM me on Instagram for collabs or editing inquiries.</p>
+    <a href="https://instagram.com/your_instagram" class="btn" target="_blank">
+        Contact Now
+    </a>
+</section>
+
+<footer>
+    © 2025 Framelit_Edits. All Rights Reserved.
+</footer>
+
+<script>
+const videos = document.querySelectorAll("video");
+
+// Skeleton remove on loaded
+videos.forEach(video => {
+    video.addEventListener("loadeddata", () => {
+        video.previousElementSibling.style.display = "none";
+        video.style.opacity = "1";
+    });
+});
+
+// Pause others on play
+videos.forEach(vid => {
+    vid.addEventListener("play", () => {
+        videos.forEach(v => {
+            if (v !== vid) v.pause();
+        });
+    });
+});
+</script>
+
+</body>
+</html>
